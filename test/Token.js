@@ -153,7 +153,7 @@ describe('Token', () => {
         expect(await event.event).to.equal('Transfer')
 
         const args = event.args
-        // expect(args.from).to.equal(deployer.address) //Args.from contains the Exchange.address which is weird. Don't know why exactly but not worth to stop the training because of this error
+        expect(args.from).to.equal(deployer.address) 
         expect(args.to).to.equal(receiver.address)
         expect(args.value).to.equal(amount)
       })

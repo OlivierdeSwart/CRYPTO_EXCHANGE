@@ -56,7 +56,7 @@ contract Token {
 		balanceOf[_from] = balanceOf[_from] - _value;
 		balanceOf[_to] = balanceOf[_to] + _value;
 
-		emit Transfer(msg.sender, _to, _value);
+		emit Transfer(_from, _to, _value);
 	}
 
 	function approve(address _spender, uint256 _value) 
