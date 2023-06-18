@@ -11,7 +11,8 @@ describe('Token', () => {
   beforeEach(async () => {
     // Fetch token from Blockchain
     const Token = await ethers.getContractFactory('Token');
-    token = await Token.deploy('Cutie Token <3', 'QT', '1000000');
+    // token = await Token.deploy('Cutie Token <3', 'QT', '1000000');
+    token = await Token.deploy('Dapp University', 'DAPP', '1000000');
   
     accounts = await ethers.getSigners()
     deployer = accounts[0] //0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
