@@ -6,21 +6,32 @@ import {
   loadProvider
   , loadNetwork
   , loadAccount
-  , loadToken
+  , loadTokens
+  , loadExchange
    } from '../store/interactions';
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // Connect to Redux storage
 
   const loadBlockchainData = async() => {
-    await loadAccount(dispatch)
-
-    // Connect Ethers to Blockchain
+    // Connect Ethers to Blockchain | PROVIDER = connection to blockchain 
+    // A PROVIDER in ethers is a read-only abstraction to access the blockchain data.
     const provider = loadProvider(dispatch)
+
+    // Fetch current network's chain id: 31337
     const chainId = await loadNetwork(provider, dispatch)
 
-    // Token Smart Contract
-    await loadToken(provider, config[chainId].QT.address, dispatch)
+    // Fetch current account & balance from Metamask
+    await loadAccount(provider, dispatch)
+
+    // Load token smart contracts
+    const QT = config[chainId].QT
+    const mETH = config[chainId].mETH
+    await loadTokens(provider, [QT.address, mETH.address], dispatch)
+
+    // Load exchange smart contract
+    const exchangeConfig = config[chainId].exchange
+    await loadExchange(provider, exchangeConfig.address, dispatch)
   }
 
   useEffect(() => {
