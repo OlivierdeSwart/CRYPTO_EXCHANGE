@@ -10,19 +10,27 @@ import {
   , loadExchange
    } from '../store/interactions';
 
+import Navbar from './Navbar'
+
 function App() {
   const dispatch = useDispatch() // Connect to Redux storage
 
   const loadBlockchainData = async() => {
-    // Connect Ethers to Blockchain | PROVIDER = connection to blockchain 
-    // A PROVIDER in ethers is a read-only abstraction to access the blockchain data.
+    // Connect Ethers to Blockchain | PROVIDER = connection to blockchain // A PROVIDER in ethers is a read-only abstraction to access the blockchain data.
     const provider = loadProvider(dispatch)
 
     // Fetch current network's chain id: 31337
     const chainId = await loadNetwork(provider, dispatch)
 
-    // Fetch current account & balance from Metamask
-    await loadAccount(provider, dispatch)
+    // Reload page when network changes
+    window.ethereum.on('chainChanged', () => {
+      window.location.reload()
+    })
+
+    // Fetch current account & balance from Metamask WHEN CHANGED
+    window.ethereum.on('accountsChanged', () => {
+      loadAccount(provider, dispatch)
+    })
 
     // Load token smart contracts
     const QT = config[chainId].QT
@@ -41,7 +49,7 @@ function App() {
   return (
     <div>
 
-      {/* Navbar */}
+      <Navbar />
 
       <main className='exchange grid'>
         <section className='exchange__section--left grid'>
