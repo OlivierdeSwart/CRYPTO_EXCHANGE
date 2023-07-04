@@ -2,24 +2,26 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import config from '../config.json';
 
-import { 
-  loadProvider
-  , loadNetwork
-  , loadAccount
-  , loadTokens
-  , loadExchange
-   } from '../store/interactions';
+import {
+  loadProvider,
+  loadNetwork,
+  loadAccount,
+  loadTokens,
+  loadExchange
+} from '../store/interactions';
 
 import Navbar from './Navbar'
+import Markets from './Markets'
+
 
 function App() {
-  const dispatch = useDispatch() // Connect to Redux storage
+  const dispatch = useDispatch()
 
-  const loadBlockchainData = async() => {
-    // Connect Ethers to Blockchain | PROVIDER = connection to blockchain // A PROVIDER in ethers is a read-only abstraction to access the blockchain data.
+  const loadBlockchainData = async () => {
+    // Connect Ethers to blockchain
     const provider = loadProvider(dispatch)
 
-    // Fetch current network's chain id: 31337
+    // Fetch current network's chainId (e.g. hardhat: 31337, kovan: 5)
     const chainId = await loadNetwork(provider, dispatch)
 
     // Reload page when network changes
@@ -27,7 +29,7 @@ function App() {
       window.location.reload()
     })
 
-    // Fetch current account & balance from Metamask WHEN CHANGED
+    // Fetch current account & balance from Metamask when changed
     window.ethereum.on('accountsChanged', () => {
       loadAccount(provider, dispatch)
     })
@@ -54,7 +56,7 @@ function App() {
       <main className='exchange grid'>
         <section className='exchange__section--left grid'>
 
-          {/* Markets */}
+          <Markets />
 
           {/* Balance */}
 

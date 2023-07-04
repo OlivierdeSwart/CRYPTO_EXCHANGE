@@ -17,7 +17,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const connectHandler = () => {
-  	loadAccount(provider, dispatch)
+    loadAccount(provider, dispatch)
   }
 
   const networkHandler = async (e) => {
@@ -30,19 +30,19 @@ const Navbar = () => {
   return(
     <div className='exchange__header grid'>
       <div className='exchange__header--brand flex'>
-      	<img src={logo} className='logo' alt='QT logo'></img>
-      	<h1>QT Token Exchange</h1>
+        <img src={logo} className='logo' alt='QT logo'></img>
+        <h1>QT Token Exchange</h1>
       </div>
 
       <div className='exchagne__header--networks flex'>
-      	<img src={eth} alt='ETH Logo' className='Eth Logo'/>
+        <img src={eth} alt='ETH Logo' className='Eth Logo'/>
 
       {chainId && (
-      	<select name="networks" id="networks" value={config[chainId] ? `0x${chainId.toString(16)}` : `0`} onChange={networkHandler}>
-      		<option value="0" disabled>Select Network</option>
-      		<option value="0x7A69">Localhost</option>
-      		<option value="0x5">Goerli</option>
-      	</select>
+        <select name="networks" id="networks" value={config[chainId] ? `0x${chainId.toString(16)}` : `0`} onChange={networkHandler}>
+          <option value="0" disabled>Select Network</option>
+          <option value="0x7A69">Localhost</option>
+          <option value="0x5">Goerli</option>
+        </select>
       )}
       </div>
 
@@ -51,19 +51,19 @@ const Navbar = () => {
       </div>
 
       <div className='exchange__header--account flex'>
-      	{balance ? (
-      		<p><small>My Balance</small>{Number(balance).toFixed(4)}</p>
-      	):(
-      		<p><small>My Balance</small>0 ETH</p>
-      		)}
-      	{account ? (
-      		<a 
+        {balance ? (
+          <p><small>My Balance</small>{Number(balance).toFixed(4)}</p>
+        ):(
+          <p><small>My Balance</small>0 ETH</p>
+          )}
+        {account ? (
+          <a 
             href={config[chainId] ? `${config[chainId].explorerURL}/address/${account}` : `#`}
             target='_blank'
             rel='noreferrer'
           >
-      		{account.slice(0,5) + '...' + account.slice(38,42)}
-  			<Blockies
+          {account.slice(0,5) + '...' + account.slice(38,42)}
+        <Blockies
               seed={account}
               size={10}
               scale={3}
@@ -71,11 +71,11 @@ const Navbar = () => {
               bgColor="#F1F2F9"
               spotColor="#767F92"
               className="identicon"
-  			/>
-      		</a> 
-      	):(
-      		<button className="button" onClick={connectHandler}>Connect</button>
-      		)}
+        />
+          </a> 
+        ):(
+          <button className="button" onClick={connectHandler}>Connect</button>
+          )}
       </div>
     </div>
   )
