@@ -30,8 +30,8 @@ const Navbar = () => {
   return(
     <div className='exchange__header grid'>
       <div className='exchange__header--brand flex'>
-        <img src={logo} className='logo' alt='QT logo'></img>
-        <h1>QT Token Exchange</h1>
+        <img src={logo} className='logo' alt='DApp logo'></img>
+        <h1>DApp Token Exchange</h1>
       </div>
 
       <div className='exchagne__header--networks flex'>
