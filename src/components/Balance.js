@@ -35,7 +35,7 @@ const Balance = () => {
       e.target.className = 'tab tab--active'
       depositRef.current.className = 'tab'
       setIsDeposit(false)
-    } else{
+    } else {
       e.target.className = 'tab tab--active'
       withdrawRef.current.className = 'tab'
       setIsDeposit(true)
@@ -58,6 +58,18 @@ const Balance = () => {
       setToken1TransferAmount(0)
     } else {
       transferTokens(provider, exchange, 'Deposit', token, token2TransferAmount, dispatch)
+      setToken2TransferAmount(0)
+    }
+  }
+
+  const withdrawHandler = (e, token) => {
+    e.preventDefault()
+
+    if (token.address === tokens[0].address) {
+      transferTokens(provider, exchange, 'Withdraw', token, token1TransferAmount, dispatch)
+      setToken1TransferAmount(0)
+    } else {
+      transferTokens(provider, exchange, 'Withdraw', token, token2TransferAmount, dispatch)
       setToken2TransferAmount(0)
     }
   }
@@ -87,7 +99,7 @@ const Balance = () => {
           <p><small>Exchange</small><br />{exchangeBalances && exchangeBalances[0]}</p>
         </div>
 
-        <form onSubmit={(e) => depositHandler(e, tokens[0])}>
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[0]) : (e) => withdrawHandler(e,tokens[0])}>
           <label htmlFor="token0">{symbols && symbols[0]} Amount</label>
           <input
             type="text"
@@ -97,10 +109,10 @@ const Balance = () => {
             onChange={(e) => amountHandler(e, tokens[0])}/>
 
           <button className='button' type='submit'>
-            {isDeposit ?(
-              <span>Deposit</span>
+            {isDeposit ? (
+                <span>Deposit</span>
             ) : (
-              <span>Withdraw</span>
+                <span>Withdraw</span>
             )}
           </button>
         </form>
@@ -117,20 +129,21 @@ const Balance = () => {
           <p><small>Exchange</small><br />{exchangeBalances && exchangeBalances[1]}</p>
         </div>
 
-        <form onSubmit={(e) => depositHandler(e, tokens[1])}>
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[1]) : (e) => withdrawHandler(e,tokens[1])}>
           <label htmlFor="token1"></label>
           <input
             type="text"
             id='token1'
             placeholder='0.0000'
             value={token2TransferAmount === 0 ? '' : token2TransferAmount}
-            onChange={(e) => amountHandler(e, tokens[1])}/>
+            onChange={(e) => amountHandler(e, tokens[1])}
+          />
 
           <button className='button' type='submit'>
-            {isDeposit ?(
-              <span>Deposit</span>
+            {isDeposit ? (
+                <span>Deposit</span>
             ) : (
-              <span>Withdraw</span>
+                <span>Withdraw</span>
             )}
           </button>
         </form>
