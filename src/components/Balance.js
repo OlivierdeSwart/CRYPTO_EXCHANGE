@@ -72,6 +72,8 @@ const Balance = () => {
       transferTokens(provider, exchange, 'Withdraw', token, token2TransferAmount, dispatch)
       setToken2TransferAmount(0)
     }
+
+    console.log("withrawing tokens...")
   }
 
   useEffect(() => {
@@ -99,7 +101,7 @@ const Balance = () => {
           <p><small>Exchange</small><br />{exchangeBalances && exchangeBalances[0]}</p>
         </div>
 
-        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[0]) : (e) => withdrawHandler(e,tokens[0])}>
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[0]) : (e) => withdrawHandler(e, tokens[0])}>
           <label htmlFor="token0">{symbols && symbols[0]} Amount</label>
           <input
             type="text"
@@ -129,7 +131,7 @@ const Balance = () => {
           <p><small>Exchange</small><br />{exchangeBalances && exchangeBalances[1]}</p>
         </div>
 
-        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[1]) : (e) => withdrawHandler(e,tokens[1])}>
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[1]) : (e) => withdrawHandler(e, tokens[1])}>
           <label htmlFor="token1"></label>
           <input
             type="text"

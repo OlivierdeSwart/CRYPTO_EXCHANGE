@@ -85,6 +85,34 @@ export const loadBalances = async (exchange, tokens, account, dispatch) => {
 
 }
 
+
+// ------------------------------------------------------------------------------
+// LOAD ALL ORDERS
+
+export const loadAllOrders = async (provider, exchange, dispatch) => {
+
+  const block = await provider.getBlockNumber()
+
+  // Fetch canceled orders
+  const cancelStream = await exchange.queryFilter('Cancel', 0, block)
+  const cancelledOrders = cancelStream.map(event => event.args)
+
+  dispatch({ type: 'CANCELLED_ORDERS_LOADED', cancelledOrders })
+
+  // Fetch filled orders
+  const tradeStream = await exchange.queryFilter('Trade', 0, block)
+  const filledOrders = tradeStream.map(event => event.args)
+
+  dispatch({ type: 'FILLED_ORDERS_LOADED', filledOrders })
+
+  // Fetch all orders
+  const orderStream = await exchange.queryFilter('Order', 0, block)
+  const allOrders = orderStream.map(event => event.args)
+
+  dispatch({ type: 'ALL_ORDERS_LOADED', allOrders })
+}
+
+
 // ------------------------------------------------------------------------------
 // TRANSFER TOKENS (DEPOSIT & WITHDRAWS)
 
@@ -100,12 +128,10 @@ export const transferTokens =  async (provider, exchange, transferType, token, a
     if (transferType === 'Deposit') {
       transaction = await token.connect(signer).approve(exchange.address, amountToTransfer)
       await transaction.wait()
-      transaction = await exchange.connect(signer).depositToken(token.address, amountToTransfer)  
+      transaction = await exchange.connect(signer).depositToken(token.address, amountToTransfer)
     } else {
-      transaction = await exchange.connect(signer).withdrawToken(token.address, amountToTransfer) 
+      transaction = await exchange.connect(signer).withdrawToken(token.address, amountToTransfer)
     }
-
-    
 
     await transaction.wait()
 
@@ -115,7 +141,7 @@ export const transferTokens =  async (provider, exchange, transferType, token, a
 }
 
 // ------------------------------------------------------------------------------
-// TRANSFER CASES (DEPOSIT & WITHDRAWS)
+// ORDERS (BUY & SELL)
 
 export const makeBuyOrder = async (provider, exchange, tokens, order, dispatch) => {
   const tokenGet = tokens[0].address
@@ -123,7 +149,7 @@ export const makeBuyOrder = async (provider, exchange, tokens, order, dispatch) 
   const tokenGive = tokens[1].address
   const amountGive = ethers.utils.parseUnits((order.amount * order.price).toString(), 18)
 
-  dispatch({type: 'NEW_ORDER_REQUEST' })
+  dispatch({ type: 'NEW_ORDER_REQUEST' })
 
   try {
     const signer = await provider.getSigner()
@@ -140,7 +166,7 @@ export const makeSellOrder = async (provider, exchange, tokens, order, dispatch)
   const tokenGive = tokens[0].address
   const amountGive = ethers.utils.parseUnits(order.amount, 18)
 
-  dispatch({type: 'NEW_ORDER_REQUEST' })
+  dispatch({ type: 'NEW_ORDER_REQUEST' })
 
   try {
     const signer = await provider.getSigner()
@@ -150,8 +176,3 @@ export const makeSellOrder = async (provider, exchange, tokens, order, dispatch)
     dispatch({ type: 'NEW_ORDER_FAIL' })
   }
 }
-
-
-
-
-
