@@ -14,7 +14,19 @@
     },
     "explorerURL": "#"
   },
-  "42": {
-    "explorerURL": "https://kovan.etherscan.io/"
+  "11155111": {
+    "exchange": {
+      "address": "0x1C6Eb35f67eBc240b0161BFa8f3A149541A31e7f"
+    },
+    "DApp": {
+      "address": "0x2330E49be41d34Ae173BE48e6FbC2ae5a9B839DB"
+    },
+    "mETH": {
+      "address": "0xC5C756b2AAfbD9aCE80e99A318B577Acb5b19159"
+    },
+    "mDAI": {
+      "address": "0x33417D60495f593d3483724F95c66baD78B546C3"
+    },
+    "explorerURL": "https://sepolia.etherscan.io/"
   }
 }
