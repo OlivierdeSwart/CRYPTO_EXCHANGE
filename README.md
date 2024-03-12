@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Decentralized Crypto Exchange: Showcase Project #1
+This project is a culmination of my journey through the Blockchain Developer Bootcamp at dApp University, demonstrating a fully functional Decentralized Crypto Exchange.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Quick Links:
+Live Deployment: Experience the live version of our project here: https://app.fleek.co/#/sites/hidden-cloud-9543/deploys/2023-08-18T10:29:48.944Z?accountId=61c76c33-e4e4-4e47-b060-86a13d616dc9
 
-## Available Scripts
+Project Overview Video: For a concise summary of what this project entails, please view our video [insert link here].
 
-In the project directory, you can run:
 
-### `npm start`
+## Project Composition:
+Our Decentralized Crypto Exchange is a comprehensive platform comprising both front-end and back-end components, meticulously deployed across two key test networks: Mumbai and Sepolia.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Core Technology - Smart Contracts:
+At the heart of our exchange are two pivotal smart contracts:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Token.sol: This contract has been deployed thrice to forge three distinct cryptocurrencies: Dapp, mEth, and mDai. These tokens are the primary assets available for exchange.
+- Exchange.sol: Facilitating the core exchange functionality, this contract empowers users to trade the aforementioned cryptocurrencies seamlessly.
 
-### `npm test`
+## Features at a Glance:
+Our exchange platform is rich with features designed to enhance user experience:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Market & Token Pair Selection: Users can select from various markets and token trading pairs.
+- Network Selection: Flexibility to choose between the Mumbai and Sepolia networks.
+- Balance Management: Comprehensive overview of balances for trading pairs with options to deposit or withdraw funds.
+- Order Management: Users can create, view, and manage their trading orders.
+- Trading History Visualization: A candlestick chart provides a graphical representation of trading activities.
+- User Orders & Trades Overview: A detailed look into the user's own orders and the trades executed across the platform.
+- Order Book: A real-time order book displaying the depth of market for selected trading pairs.
