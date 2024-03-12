@@ -2,7 +2,7 @@
 This project is a culmination of my journey through the Blockchain Developer Bootcamp at dApp University, demonstrating a fully functional Decentralized Crypto Exchange.
 
 ## Tech stack:
-Solidity, Hardhat, React, npm, node.js
+Solidity, JavaScript, Hardhat, React, npm, node.js
 
 ## Quick Links:
 Live Deployment: Experience the live version of our project here: https://app.fleek.co/#/sites/hidden-cloud-9543/deploys/2023-08-18T10:29:48.944Z?accountId=61c76c33-e4e4-4e47-b060-86a13d616dc9
