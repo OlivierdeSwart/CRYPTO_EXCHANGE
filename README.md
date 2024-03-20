@@ -1,3 +1,5 @@
+This video describes the project: https://www.loom.com/share/cdcb3458c158464badec48d843cdfef8
+
 # Decentralized Crypto Exchange: Showcase Project #1
 This project is a culmination of my journey through the Blockchain Developer Bootcamp at dApp University, demonstrating a fully functional Decentralized Crypto Exchange.
 
